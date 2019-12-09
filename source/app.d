@@ -1,6 +1,8 @@
 import std.stdio;
+
 import derelict.sdl2.sdl;
 import derelict.sdl2.image;
+
 import std.conv;
 
 void main()
