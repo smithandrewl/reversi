@@ -26,6 +26,7 @@ void main()
 
 	// Load image
 	SDL_Surface *imgSurf = IMG_Load("grumpy-cat.jpg");
+
 	if (imgSurf is null) {
 		writeln("IMG_Load: ", to!string(IMG_GetError()));
 	}
@@ -86,6 +87,9 @@ void main()
 	}
 
 	// Tidy up
+
+	SDL_FreeSurface(imgSurf);
+
 	IMG_Quit();
 	SDL_Quit();
 }
