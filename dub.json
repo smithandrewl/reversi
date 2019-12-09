@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"andrew"
+	],
+	"copyright": "Copyright © 2019, andrew",
+	"dependencies": {
+		"derelict-sdl2": "~>2.1.4"
+	},
+	"description": "A reversi game in D.",
+	"license": "MIT",
+	"name": "reversi"
+}
