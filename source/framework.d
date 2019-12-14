@@ -51,8 +51,6 @@ class GameBoard {
         m_cells[row][col] = value;
     }
 
-
-
     this() {
         m_cells = new CellState[][](8,8);
 

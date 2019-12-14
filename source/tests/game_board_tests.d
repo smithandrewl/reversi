@@ -28,8 +28,6 @@ unittest {
 unittest {
     GameBoard gameBoard = new GameBoard();
 
-
-
     bool correct = true;
 
     for(int i = 0; i < 8; i++) {
