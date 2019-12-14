@@ -10,6 +10,12 @@ class GameData {
 
 }
 
+enum CellState {
+    FREE,
+    WHITE,
+    BLACK
+}
+
 class GameBoard {
 
 }
