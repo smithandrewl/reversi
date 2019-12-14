@@ -7,5 +7,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="derelict-sdl2-2.1.4" level="project" />
     <orderEntry type="library" name="derelict-util-2.0.6" level="project" />
+    <orderEntry type="library" name="dunit-1.0.15" level="project" />
   </component>
 </module>

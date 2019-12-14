@@ -4,9 +4,23 @@
 	],
 	"copyright": "Copyright © 2019, andrew",
 	"dependencies": {
-		"derelict-sdl2": "~>2.1.4"
+		"derelict-sdl2": "~>2.1.4",
 	},
 	"description": "A reversi game in D.",
 	"license": "MIT",
-	"name": "reversi"
+	"name": "reversi",
+  "configurations": [
+	  {
+		  "name": "unittest",
+		  "targetType": "executable",
+		  "targetPath" : "tests",
+		  "buildOptions": ["unittests"],
+		  "excludedSourceFiles": ["source/app.d"],
+		  "sourcePaths": ["tests/"],
+		  "importPaths": ["tests/"],
+		  "dependencies": {
+			  "dunit": ">=1.0.9"
+		  }
+	  }
+  ]
 }
