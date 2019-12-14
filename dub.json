@@ -11,6 +11,11 @@
 	"name": "reversi",
   "configurations": [
 	  {
+		  "name": "application",
+		  "targetType": "executable",
+		  "excludedSourceFiles": ["source/tests/*"]
+	  },
+	  {
 		  "name": "unittest",
 		  "targetType": "executable",
 		  "targetPath" : "tests",
