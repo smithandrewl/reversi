@@ -11,7 +11,7 @@ void main()
 	DerelictSDL2Image.load();
 
 	//  padding around image in pixels
-	int padding = 20;
+	const int padding = 20;
 
 	// Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -19,7 +19,7 @@ void main()
 	}
 
 	// Initialise IMG
-	int flags = IMG_INIT_PNG | IMG_INIT_JPG;
+	const int flags = IMG_INIT_PNG | IMG_INIT_JPG;
 	if ((IMG_Init(flags) & flags) != flags) {
 		writeln("IMG_Init: ", to!string(IMG_GetError()));
 	}
@@ -52,7 +52,7 @@ void main()
 	}
 
 	// Define a colour for the surface, based on RGB values
-	int colour = SDL_MapRGB(winSurf.format, 0xFF, 0xFF, 0xFF);
+	const int colour = SDL_MapRGB(winSurf.format, 0xFF, 0xFF, 0xFF);
 
 	// Fill the window surface with the colour
 	SDL_FillRect(winSurf, null, colour);
