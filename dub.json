@@ -16,6 +16,7 @@
 		  "excludedSourceFiles": ["source/tests/*"]
 	  },
 	  {
+		  "mainSourceFile": "source/tests/tests.d",
 		  "name": "unittest",
 		  "targetType": "executable",
 		  "targetPath" : "tests",
