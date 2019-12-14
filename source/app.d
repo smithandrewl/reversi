@@ -11,7 +11,7 @@ void main()
 	DerelictSDL2Image.load();
 
 	//  padding around image in pixels
-	const int padding = 20;
+	const int padding = 10;
 
 	// Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
