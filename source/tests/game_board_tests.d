@@ -28,7 +28,7 @@ unittest {
 unittest {
     GameBoard gameBoard = new GameBoard();
 
-    CellState[][] cells = gameBoard.cells;
+
 
     bool correct = true;
 
@@ -38,7 +38,7 @@ unittest {
         }
 
         for(int j = 0; j < 8; j++) {
-            if(cells[i][j] != CellState.FREE) {
+            if(gameBoard.get(i, j) != CellState.FREE) {
                 correct = false;
                 break;
             }

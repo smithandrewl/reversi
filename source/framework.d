@@ -43,9 +43,15 @@ enum CellState {
 class GameBoard {
     private CellState[][] m_cells;
 
-    CellState[][] cells() {
-        return m_cells;
+    CellState get(int row, int col) {
+        return m_cells[row][col];
     }
+
+    void set(int row, int col, CellState value) {
+        m_cells[row][col] = value;
+    }
+
+
 
     this() {
         m_cells = new CellState[][](8,8);
