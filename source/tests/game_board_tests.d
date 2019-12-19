@@ -4,7 +4,10 @@ import std.stdio;
 import dunit.toolkit;
 import std.conv;
 
-import framework;
+import game;
+import game_data;
+import game_board;
+
 unittest {
     GameData gameData = new GameData(800, 600);
 
