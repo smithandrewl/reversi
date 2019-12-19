@@ -2,9 +2,7 @@ module framework;
 
 import std.stdio;
 
-class Game {
 
-}
 
 class GameData {
     private int m_width;
@@ -64,4 +62,22 @@ class GameBoard {
 
 class GameRenderer {
 
+}
+
+class Game {
+    private GameData m_gameData;
+    private GameRenderer m_gameRenderer;
+
+    this(GameData gameData, GameRenderer gameRenderer) {
+        this.m_gameData = gameData;
+        this.m_gameRenderer = gameRenderer;
+    }
+
+    void update() {
+
+    }
+
+    void draw() {
+
+    }
 }
