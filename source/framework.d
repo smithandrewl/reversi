@@ -61,3 +61,7 @@ class GameBoard {
         }
     }
 }
+
+class GameRenderer {
+
+}
