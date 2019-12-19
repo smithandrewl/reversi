@@ -85,6 +85,6 @@ class Game {
     }
 
     void draw() {
-
+        m_gameRenderer.draw(m_gameData);
     }
 }
