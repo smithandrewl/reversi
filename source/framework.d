@@ -2,7 +2,7 @@ module framework;
 
 import std.stdio;
 
-
+import derelict.sdl2.sdl;
 
 class GameData {
     private int m_width;
@@ -61,6 +61,10 @@ class GameBoard {
 }
 
 class GameRenderer {
+    private SDL_Surface* m_sdlSurface;
+    this(SDL_Surface * sdlSurface) {
+        m_sdlSurface = sdlSurface;
+    }
     void draw(GameData gameData) {
     }
 
