@@ -61,6 +61,9 @@ class GameBoard {
 }
 
 class GameRenderer {
+    void draw(GameData gameData) {
+    }
+
 
 }
 
