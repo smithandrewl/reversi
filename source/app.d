@@ -20,6 +20,7 @@ void main()
 
 	// Initialise IMG
 	const int flags = IMG_INIT_PNG | IMG_INIT_JPG;
+
 	if ((IMG_Init(flags) & flags) != flags) {
 		writeln("IMG_Init: ", to!string(IMG_GetError()));
 	}
@@ -40,6 +41,7 @@ void main()
 		imgSurf.h + padding * 2,
 		SDL_WINDOW_OPENGL
 	);
+
 	if (appWin is null) {
 		writefln("SDL_CreateWindow: ", SDL_GetError());
 		return;
@@ -47,6 +49,7 @@ void main()
 
 	// Get the window surface
 	SDL_Surface *winSurf = SDL_GetWindowSurface(appWin);
+
 	if (winSurf is null) {
 		writeln("SDL_GetWindowSurface: ", SDL_GetError());
 	}
@@ -61,6 +64,7 @@ void main()
 	SDL_Rect dstRect;
 	dstRect.x = padding;
 	dstRect.y = padding;
+
 	SDL_BlitSurface(imgSurf, null, winSurf, &dstRect);
 
 	// Copy the window surface to the screen
@@ -69,16 +73,17 @@ void main()
 	// Polling for events
 	SDL_Event event;
 	bool quit = false;
-	while(!quit) {
-			while (SDL_PollEvent(&event)) {
-				if (event.type == SDL_QUIT) {
-					quit = true;
-				}
 
-				if (event.type == SDL_KEYDOWN) {
-					quit = true;
-				}
+	while(!quit) {
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT) {
+				quit = true;
 			}
+
+			if (event.type == SDL_KEYDOWN) {
+				quit = true;
+			}
+		}
 	}
 
 	// Close and destroy the window
@@ -87,7 +92,6 @@ void main()
 	}
 
 	// Tidy up
-
 	SDL_FreeSurface(imgSurf);
 
 	IMG_Quit();

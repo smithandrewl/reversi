@@ -1,17 +1,16 @@
 module framework;
 
 import std.stdio;
-
 import derelict.sdl2.sdl;
 
 class GameData {
-    private int m_width;
-    private int m_height;
+    private int  m_width;
+    private int  m_height;
     private bool m_game_over;
 
     this(int width, int height) {
-        m_width = width;
-        m_height = height;
+        m_width     = width;
+        m_height    = height;
         m_game_over = false;
     }
 
@@ -62,27 +61,23 @@ class GameBoard {
 
 class GameRenderer {
     private SDL_Surface* m_sdlSurface;
+
     this(SDL_Surface * sdlSurface) {
         m_sdlSurface = sdlSurface;
     }
-    void draw(GameData gameData) {
-    }
-
-
+    void draw(GameData gameData) { }
 }
 
 class Game {
-    private GameData m_gameData;
+    private GameData     m_gameData;
     private GameRenderer m_gameRenderer;
 
     this(GameData gameData, GameRenderer gameRenderer) {
-        this.m_gameData = gameData;
+        this.m_gameData     = gameData;
         this.m_gameRenderer = gameRenderer;
     }
 
-    void update() {
-
-    }
+    void update() { }
 
     void draw() {
         m_gameRenderer.draw(m_gameData);
