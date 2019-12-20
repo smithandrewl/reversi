@@ -3,6 +3,10 @@ import std.stdio;
 import derelict.sdl2.sdl;
 import derelict.sdl2.image;
 
+import game;
+import game_data;
+import game_renderer;
+
 import std.conv;
 
 void main()
@@ -32,13 +36,15 @@ void main()
 		writeln("IMG_Load: ", to!string(IMG_GetError()));
 	}
 
+	GameData gameData = new GameData(800, 600);
+
 	// Create a window
 	SDL_Window* appWin = SDL_CreateWindow(
 		"Reversi",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		imgSurf.w + padding * 2,
-		imgSurf.h + padding * 2,
+		gameData.width,
+		gameData.height,
 		SDL_WINDOW_OPENGL
 	);
 
@@ -49,6 +55,14 @@ void main()
 
 	// Get the window surface
 	SDL_Surface *winSurf = SDL_GetWindowSurface(appWin);
+
+	GameRenderer gameRenderer = new GameRenderer(winSurf);
+
+	Game game = new Game(
+	gameData,
+	gameRenderer
+	);
+
 
 	if (winSurf is null) {
 		writeln("SDL_GetWindowSurface: ", SDL_GetError());
@@ -69,6 +83,10 @@ void main()
 
 	// Copy the window surface to the screen
 	SDL_UpdateWindowSurface(appWin);
+
+
+
+
 
 	// Polling for events
 	SDL_Event event;
