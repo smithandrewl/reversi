@@ -71,7 +71,6 @@ void main()
 			}
 		}
 
-
 		game.update();
 		game.draw();
 
@@ -83,5 +82,6 @@ void main()
 	if (appWin !is null) {
 		SDL_DestroyWindow(appWin);
 	}
+
 	SDL_Quit();
 }
