@@ -47,12 +47,9 @@ void main()
 	gameRenderer
 	);
 
-
 	if (winSurf is null) {
 		writeln("SDL_GetWindowSurface: ", SDL_GetError());
 	}
-
-
 
 	// Copy loaded image to window surface
 	SDL_Rect dstRect;
