@@ -8,7 +8,7 @@ class GameRenderer {
     private SDL_Renderer* m_renderer;
 
     private int m_frame_delay = 1000/60;
-    private const int padding = 15;
+    private const int padding = 25;
     
     private int m_cell_width;
     private int m_cell_height;
@@ -32,10 +32,10 @@ class GameRenderer {
         rect.x = padding;
         rect.y = padding;
 
-       SDL_SetRenderDrawColor(m_renderer, 11, 75, 11, 255);
+       SDL_SetRenderDrawColor(m_renderer,0, 54, 18, 255);
        SDL_RenderFillRect(m_renderer, &rect);
 
-        SDL_SetRenderDrawColor(m_renderer, 0,0,0, 255);
+        SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
         for(int row = 0; row < 7; row ++) {
             for(int col = 0; col < 7; col ++) {
                 SDL_RenderDrawLine(
@@ -55,6 +55,41 @@ class GameRenderer {
                 padding + (m_cell_height * (row + 1))
             );
         }
+
+        SDL_SetRenderDrawColor(m_renderer, 36,127, 67, 255);
+        SDL_RenderDrawLine(
+            m_renderer,
+            padding,
+            0,
+            padding,
+            gameData.height
+        );
+
+        SDL_RenderDrawLine(
+            m_renderer,
+            gameData.width - padding,
+            0,
+            gameData.width - padding,
+            gameData.height
+        );
+
+        SDL_RenderDrawLine(
+            m_renderer,
+            0,
+            padding,
+            gameData.width,
+            padding
+        
+        );
+
+        SDL_RenderDrawLine(
+            m_renderer,
+            0,
+            gameData.height - padding,
+            gameData.width,
+            gameData.height - padding
+
+        );
 
        SDL_RenderPresent(m_renderer);
 
