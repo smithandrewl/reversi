@@ -69,7 +69,7 @@ void main()
 	}
 
 	// Define a colour for the surface, based on RGB values
-	const int colour = SDL_MapRGB(winSurf.format, 0xFF, 0xFF, 0xFF);
+	const int colour = SDL_MapRGB(winSurf.format, 0x00, 0x00, 0x00);
 
 	// Fill the window surface with the colour
 	SDL_FillRect(winSurf, null, colour);
