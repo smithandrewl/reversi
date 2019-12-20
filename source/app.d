@@ -17,7 +17,7 @@ void main()
 		writeln("SDL_Init: ", SDL_GetError());
 	}
 
-	GameData gameData = new GameData(800, 600);
+	GameData gameData = new GameData(600, 700);
 
 	// Create a window
 	SDL_Window* appWin = SDL_CreateWindow(
