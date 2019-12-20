@@ -56,10 +56,6 @@ void main()
 			if (event.type == SDL_QUIT) {
 				quit = true;
 			}
-
-			if (event.type == SDL_KEYDOWN) {
-				quit = true;
-			}
 		}
 
 		game.update();
