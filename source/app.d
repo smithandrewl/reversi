@@ -1,7 +1,6 @@
 import std.stdio;
 
 import derelict.sdl2.sdl;
-import derelict.sdl2.image;
 
 import game;
 import game_data;
@@ -12,7 +11,6 @@ import std.conv;
 void main()
 {
 	DerelictSDL2.load();
-	DerelictSDL2Image.load();
 
 	//  padding around image in pixels
 	const int padding = 10;
@@ -20,20 +18,6 @@ void main()
 	// Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		writeln("SDL_Init: ", SDL_GetError());
-	}
-
-	// Initialise IMG
-	const int flags = IMG_INIT_PNG | IMG_INIT_JPG;
-
-	if ((IMG_Init(flags) & flags) != flags) {
-		writeln("IMG_Init: ", to!string(IMG_GetError()));
-	}
-
-	// Load image
-	SDL_Surface *imgSurf = IMG_Load("grumpy-cat.jpg");
-
-	if (imgSurf is null) {
-		writeln("IMG_Load: ", to!string(IMG_GetError()));
 	}
 
 	GameData gameData = new GameData(800, 600);
@@ -68,25 +52,12 @@ void main()
 		writeln("SDL_GetWindowSurface: ", SDL_GetError());
 	}
 
-	// Define a colour for the surface, based on RGB values
-	const int colour = SDL_MapRGB(winSurf.format, 0x00, 0x00, 0x00);
 
-	// Fill the window surface with the colour
-	SDL_FillRect(winSurf, null, colour);
 
 	// Copy loaded image to window surface
 	SDL_Rect dstRect;
 	dstRect.x = padding;
 	dstRect.y = padding;
-
-	SDL_BlitSurface(imgSurf, null, winSurf, &dstRect);
-
-	// Copy the window surface to the screen
-	SDL_UpdateWindowSurface(appWin);
-
-
-
-
 
 	// Polling for events
 	SDL_Event event;
@@ -102,16 +73,18 @@ void main()
 				quit = true;
 			}
 		}
+
+
+		game.update();
+		game.draw();
+
+		// Copy the window surface to the screen
+		SDL_UpdateWindowSurface(appWin);
 	}
 
 	// Close and destroy the window
 	if (appWin !is null) {
 		SDL_DestroyWindow(appWin);
 	}
-
-	// Tidy up
-	SDL_FreeSurface(imgSurf);
-
-	IMG_Quit();
 	SDL_Quit();
 }
