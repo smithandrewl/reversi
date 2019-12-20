@@ -12,10 +12,6 @@ void main()
 {
 	DerelictSDL2.load();
 
-	
-	//  padding around image in pixels
-	const int padding = 10;
-
 	// Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		writeln("SDL_Init: ", SDL_GetError());
@@ -38,7 +34,7 @@ void main()
 		return;
 	}
 
-/* Create a Render */
+	/* Create a Render */
     SDL_Renderer *render = SDL_CreateRenderer(appWin, -1, SDL_RENDERER_ACCELERATED );
     if (render is null) {
         writefln("SDL_CreateRenderer Error: ", SDL_GetError());
@@ -47,8 +43,8 @@ void main()
 	GameRenderer gameRenderer = new GameRenderer(render);
 
 	Game game = new Game(
-	gameData,
-	gameRenderer
+		gameData,
+		gameRenderer
 	);
 
 	// Polling for events
@@ -68,10 +64,6 @@ void main()
 
 		game.update();
 		game.draw();
-
-		// Copy the window surface to the screen
-		//SDL_UpdateWindowSurface(appWin);\
-		
 	}
 
 	// Close and destroy the window
