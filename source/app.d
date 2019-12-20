@@ -12,6 +12,7 @@ void main()
 {
 	DerelictSDL2.load();
 
+	
 	//  padding around image in pixels
 	const int padding = 10;
 
@@ -37,24 +38,18 @@ void main()
 		return;
 	}
 
-	// Get the window surface
-	SDL_Surface *winSurf = SDL_GetWindowSurface(appWin);
+/* Create a Render */
+    SDL_Renderer *render = SDL_CreateRenderer(appWin, -1, SDL_RENDERER_ACCELERATED );
+    if (render is null) {
+        writefln("SDL_CreateRenderer Error: ", SDL_GetError());
+    }
 
-	GameRenderer gameRenderer = new GameRenderer(winSurf);
+	GameRenderer gameRenderer = new GameRenderer(render);
 
 	Game game = new Game(
 	gameData,
 	gameRenderer
 	);
-
-	if (winSurf is null) {
-		writeln("SDL_GetWindowSurface: ", SDL_GetError());
-	}
-
-	// Copy loaded image to window surface
-	SDL_Rect dstRect;
-	dstRect.x = padding;
-	dstRect.y = padding;
 
 	// Polling for events
 	SDL_Event event;
@@ -75,7 +70,8 @@ void main()
 		game.draw();
 
 		// Copy the window surface to the screen
-		SDL_UpdateWindowSurface(appWin);
+		//SDL_UpdateWindowSurface(appWin);\
+		
 	}
 
 	// Close and destroy the window
