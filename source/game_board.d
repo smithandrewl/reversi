@@ -22,7 +22,11 @@ class GameBoard {
 
         for (int i=0; i < 8; i++){
             for (int j = 0; j < 8; j++) {
-                    m_cells[i][j] = CellState.FREE;
+                if(j % 2 == 0) {
+                    m_cells[i][j] = CellState.WHITE;
+                } else {
+                    m_cells[i][j] = CellState.BLACK;
+                }
                 
             }
         }
