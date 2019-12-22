@@ -23,7 +23,8 @@ class GameRenderer {
         m_cell_width  = (gameData.width  - (2 * padding)) / 8;
         m_cell_height = (gameData.height - (2 * padding)) / 8;
 
-SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
+        SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
+        
         for(int row = 0; row < 7; row ++) {
             for(int col = 0; col < 7; col ++) {
                 SDL_RenderDrawLine(
