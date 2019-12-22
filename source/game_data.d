@@ -1,6 +1,9 @@
 module game_data;
 
+import game_board;
+
 class GameData {
+    private GameBoard m_gameBoard;
     private int  m_width;
     private int  m_height;
     private bool m_game_over;
@@ -9,6 +12,11 @@ class GameData {
         m_width     = width;
         m_height    = height;
         m_game_over = false;
+        m_gameBoard = new GameBoard();
+    }
+
+    GameBoard gameBoard() {
+        return m_gameBoard;
     }
 
     int width() {

@@ -2,31 +2,41 @@
 	"authors": [
 		"andrew"
 	],
+	"configurations": [
+		{
+			"excludedSourceFiles": [
+				"source/tests/*"
+			],
+			"name": "application",
+			"targetType": "executable"
+		},
+		{
+			"buildOptions": [
+				"unittests"
+			],
+			"dependencies": {
+				"dunit": ">=1.0.9"
+			},
+			"excludedSourceFiles": [
+				"source/app.d"
+			],
+			"importPaths": [
+				"tests/"
+			],
+			"mainSourceFile": "source/tests/tests.d",
+			"name": "unittest",
+			"sourcePaths": [
+				"tests/"
+			],
+			"targetPath": "tests",
+			"targetType": "executable"
+		}
+	],
 	"copyright": "Copyright © 2019, andrew",
 	"dependencies": {
-		"derelict-sdl2": "~>2.1.4",
+		"derelict-sdl2": "~>2.1.4"
 	},
 	"description": "A reversi game in D.",
 	"license": "MIT",
-	"name": "reversi",
-  "configurations": [
-	  {
-		  "name": "application",
-		  "targetType": "executable",
-		  "excludedSourceFiles": ["source/tests/*"]
-	  },
-	  {
-		  "mainSourceFile": "source/tests/tests.d",
-		  "name": "unittest",
-		  "targetType": "executable",
-		  "targetPath" : "tests",
-		  "buildOptions": ["unittests"],
-		  "excludedSourceFiles": ["source/app.d"],
-		  "sourcePaths": ["tests/"],
-		  "importPaths": ["tests/"],
-		  "dependencies": {
-			  "dunit": ">=1.0.9"
-		  }
-	  }
-  ]
+	"name": "reversi"
 }

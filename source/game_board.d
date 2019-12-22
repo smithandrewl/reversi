@@ -1,6 +1,6 @@
 module game_board;
 
-enum CellState {
+public enum CellState {
     FREE,
     WHITE,
     BLACK
@@ -22,7 +22,8 @@ class GameBoard {
 
         for (int i=0; i < 8; i++){
             for (int j = 0; j < 8; j++) {
-                m_cells[i][j] = CellState.FREE;
+                    m_cells[i][j] = CellState.FREE;
+                
             }
         }
     }
