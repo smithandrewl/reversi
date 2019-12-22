@@ -7,7 +7,7 @@ class GameRenderer {
 
     private SDL_Renderer* m_renderer;
 
-    private int m_frame_delay = 1000/60;
+    private const int m_frame_delay = 1000/60;
     private const int padding = 25;
     
     private int m_cell_width;
@@ -20,7 +20,7 @@ class GameRenderer {
     }
 
     private void drawBoardCells(GameData gameData) {
-        m_cell_width = (gameData.width - (2 * padding)) / 8;
+        m_cell_width  = (gameData.width  - (2 * padding)) / 8;
         m_cell_height = (gameData.height - (2 * padding)) / 8;
 
 SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
@@ -28,10 +28,10 @@ SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
             for(int col = 0; col < 7; col ++) {
                 SDL_RenderDrawLine(
                     m_renderer,
-                    padding + (m_cell_width * (col + 1)),   //x1,
-                    padding,//y1,
-                    padding + (m_cell_width * (col + 1)),//x2,
-                    gameData.height - padding//y2
+                    padding + (m_cell_width * (col + 1)),
+                    padding,
+                    padding + (m_cell_width * (col + 1)),
+                    gameData.height - padding
                 );       
             }
 
@@ -83,7 +83,7 @@ SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
     }
     private void drawBoard(GameData gameData) {
 
-        m_cell_width = (gameData.width - (2 * padding)) / 8;
+        m_cell_width  = (gameData.width  - (2 * padding)) / 8;
         m_cell_height = (gameData.height - (2 * padding)) / 8;
 
         frameStart = SDL_GetTicks();
@@ -93,7 +93,7 @@ SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
         
         SDL_Rect rect;
         rect.h = gameData.height - (2 * padding);
-        rect.w = gameData.width - (2 * padding);
+        rect.w = gameData.width  - (2 * padding);
         rect.x = padding;
         rect.y = padding;
 
