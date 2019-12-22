@@ -114,15 +114,16 @@ class GameRenderer {
         rect.x = padding + (m_cell_width * col)  + m_cell_width / 4;
         rect.y = padding + (m_cell_height * row) + m_cell_height / 4;
 
-        if(gameData.gameBoard.get(row, col) == CellState.FREE) {
-            return;
-        }
-
-        if(gameData.gameBoard.get(row, col) == CellState.WHITE) {
-            SDL_SetRenderDrawColor(m_renderer, 255,255,255,255);
-        } else if(gameData.gameBoard.get(row, col) == CellState.BLACK){
-            SDL_SetRenderDrawColor(m_renderer, 0,0,0,255);
-        }
+       switch(gameData.gameBoard.get(row, col)) {
+           case CellState.WHITE:
+               SDL_SetRenderDrawColor(m_renderer, 255,255,255,255);
+               break;
+           case CellState.BLACK:
+               SDL_SetRenderDrawColor(m_renderer, 0,0,0,255);
+               break;
+           default:
+               return;
+       }
 
        SDL_RenderFillRect(m_renderer, &rect);               
     }
