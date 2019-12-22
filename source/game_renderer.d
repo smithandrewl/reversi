@@ -13,29 +13,17 @@ class GameRenderer {
     private int m_cell_width;
     private int m_cell_height;
 
+    private int frameStart;
+
     this(SDL_Renderer *sdlRenderer) {
         m_renderer = sdlRenderer;
     }
-    void draw(GameData gameData) {
 
+    private void drawBoardCells(GameData gameData) {
         m_cell_width = (gameData.width - (2 * padding)) / 8;
         m_cell_height = (gameData.height - (2 * padding)) / 8;
 
-        auto frameStart = SDL_GetTicks();
-
-        SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
-        SDL_RenderClear(m_renderer);
-        
-        SDL_Rect rect;
-        rect.h = gameData.height - (2 * padding);
-        rect.w = gameData.width - (2 * padding);
-        rect.x = padding;
-        rect.y = padding;
-
-       SDL_SetRenderDrawColor(m_renderer,0, 54, 18, 255);
-       SDL_RenderFillRect(m_renderer, &rect);
-
-        SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
+SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
         for(int row = 0; row < 7; row ++) {
             for(int col = 0; col < 7; col ++) {
                 SDL_RenderDrawLine(
@@ -55,7 +43,9 @@ class GameRenderer {
                 padding + (m_cell_height * (row + 1))
             );
         }
+    }
 
+    private void drawBoardFrame(GameData gameData) {
         SDL_SetRenderDrawColor(m_renderer, 36,127, 67, 255);
         SDL_RenderDrawLine(
             m_renderer,
@@ -90,6 +80,31 @@ class GameRenderer {
             gameData.height - padding
 
         );
+    }
+    private void drawBoard(GameData gameData) {
+
+        m_cell_width = (gameData.width - (2 * padding)) / 8;
+        m_cell_height = (gameData.height - (2 * padding)) / 8;
+
+        frameStart = SDL_GetTicks();
+
+        SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
+        SDL_RenderClear(m_renderer);
+        
+        SDL_Rect rect;
+        rect.h = gameData.height - (2 * padding);
+        rect.w = gameData.width - (2 * padding);
+        rect.x = padding;
+        rect.y = padding;
+
+       SDL_SetRenderDrawColor(m_renderer,0, 54, 18, 255);
+       SDL_RenderFillRect(m_renderer, &rect);
+    }
+
+    void draw(GameData gameData) {
+        drawBoard(gameData);
+        drawBoardCells(gameData);
+        drawBoardFrame(gameData);
 
        SDL_RenderPresent(m_renderer);
 
