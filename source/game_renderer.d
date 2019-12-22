@@ -11,7 +11,7 @@ class GameRenderer {
     private SDL_Renderer* m_renderer;
 
     private const int m_frame_delay = 1000/60;
-    private const int padding = 25;
+    private const int padding       = 25;
     
     private int m_cell_width;
     private int m_cell_height;
@@ -42,9 +42,9 @@ class GameRenderer {
             SDL_RenderDrawLine(
                 m_renderer,
                 padding,
-                padding + (m_cell_height * (row + 1)),
+                padding        + (m_cell_height * (row + 1)),
                 gameData.width - padding,
-                padding + (m_cell_height * (row + 1))
+                padding        + (m_cell_height * (row + 1))
             );
         }
     }
@@ -109,28 +109,28 @@ class GameRenderer {
        SDL_Rect rect;
 
         rect.h = m_cell_height / 2;
-        rect.w = m_cell_width / 2;
-        rect.x = padding + (m_cell_width * col) + m_cell_width / 4;
+        rect.w = m_cell_width  / 2;
+
+        rect.x = padding + (m_cell_width * col)  + m_cell_width / 4;
         rect.y = padding + (m_cell_height * row) + m_cell_height / 4;
 
         if(gameData.gameBoard.get(row, col) == CellState.FREE) {
             return;
         }
+
         if(gameData.gameBoard.get(row, col) == CellState.WHITE) {
             SDL_SetRenderDrawColor(m_renderer, 255,255,255,255);
         } else if(gameData.gameBoard.get(row, col) == CellState.BLACK){
             SDL_SetRenderDrawColor(m_renderer, 0,0,0,255);
         }
 
-       SDL_RenderFillRect(m_renderer, &rect);
-
-                            
+       SDL_RenderFillRect(m_renderer, &rect);               
     }
 
     void drawGamePieces(GameData gameData) {
         for(int row = 0; row < 8; row++) {
             for(int col = 0; col < 8; col++) {
-        drawGamePiece(gameData, row, col);
+                drawGamePiece(gameData, row, col);
             }
         }
     }
@@ -141,9 +141,9 @@ class GameRenderer {
         drawGamePieces(gameData);
         drawBoardFrame(gameData);
 
-       SDL_RenderPresent(m_renderer);
+        SDL_RenderPresent(m_renderer);
 
-       auto frameTime = SDL_GetTicks() - frameStart;
+        auto frameTime = SDL_GetTicks() - frameStart;
 
         if (m_frame_delay > frameTime) {
             SDL_Delay(m_frame_delay - frameTime);
