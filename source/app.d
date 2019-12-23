@@ -58,8 +58,8 @@ void main()
 			}
 		}
 
-		game.update();
-		game.draw();
+		game.update(); // Update the state of the game
+		game.draw();   // Draw the state of the game
 	}
 
 	// Close and destroy the window
