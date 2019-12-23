@@ -51,12 +51,12 @@ unittest {
 
     bool correct = true;
 
-    for(int i = 0; i < 8; i++) {
+    foreach(i; 0 .. 8) {
         if(!correct) {
             break;
         }
 
-        for(int j = 0; j < 8; j++) {
+        foreach(j; 0 .. 8) {
             if(gameBoard.get(i, j) != CellState.FREE) {
                 correct = false;
                 break;
