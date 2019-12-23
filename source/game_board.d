@@ -21,14 +21,11 @@ class GameBoard {
         m_cells[row][col] = value;
     }
 
-
     this() {
         m_cells = new CellState[][](8,8);
 
-        for (int i=0; i < 8; i++){
-            for (int j = 0; j < 8; j++) {
-                m_cells[i][j] = CellState.FREE;        
-            }
+        foreach (i; 0..8){
+           m_cells[i].fill(CellState.FREE);
         }
     }
 }
