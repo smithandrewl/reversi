@@ -10,7 +10,10 @@ class GameRenderer {
 
     private SDL_Renderer* m_renderer;
 
+    // Render no more than 60 times a second.
     private const int m_frame_delay = 1000/60;
+
+    // The size, in pixels, of the padding around the game board.
     private const int padding       = 25;
     
     private int m_cell_width;
@@ -23,6 +26,8 @@ class GameRenderer {
     }
 
     private void drawBoardCells(GameData gameData) {
+
+        // The width and height of the game board cells.
         m_cell_width  = (gameData.width  - (2 * padding)) / 8;
         m_cell_height = (gameData.height - (2 * padding)) / 8;
 
@@ -30,6 +35,9 @@ class GameRenderer {
         
         foreach(row; 0 .. 7) {
             foreach(col; 0 .. 7) {
+
+                // Draw a vertical line for this column of the 
+                // game board.
                 SDL_RenderDrawLine(
                     m_renderer,
                     padding + (m_cell_width * (col + 1)),
@@ -39,6 +47,7 @@ class GameRenderer {
                 );       
             }
 
+            // Draw a horizontal line for this row of the game board.
             SDL_RenderDrawLine(
                 m_renderer,
                 padding,
@@ -51,6 +60,8 @@ class GameRenderer {
 
     private void drawBoardFrame(GameData gameData) {
         SDL_SetRenderDrawColor(m_renderer, 36,127, 67, 255);
+
+        // Draw the left border of the game board frame.
         SDL_RenderDrawLine(
             m_renderer,
             padding,
@@ -59,6 +70,7 @@ class GameRenderer {
             gameData.height
         );
 
+        // Draw the right border of the game board frame.
         SDL_RenderDrawLine(
             m_renderer,
             gameData.width - padding,
@@ -67,6 +79,7 @@ class GameRenderer {
             gameData.height
         );
 
+        // Draw the top border of the game board frame.
         SDL_RenderDrawLine(
             m_renderer,
             0,
@@ -76,6 +89,7 @@ class GameRenderer {
         
         );
 
+        // Draw the bottom border of the game board frame.
         SDL_RenderDrawLine(
             m_renderer,
             0,
@@ -84,6 +98,7 @@ class GameRenderer {
             gameData.height - padding
 
         );
+       
     }
     private void drawBoard(GameData gameData) {
 
