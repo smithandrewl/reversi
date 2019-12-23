@@ -129,8 +129,8 @@ class GameRenderer {
     }
 
     void drawGamePieces(GameData gameData) {
-        for(int row = 0; row < 8; row++) {
-            for(int col = 0; col < 8; col++) {
+        foreach(row; 0 .. 8) {
+            foreach(col; 0 .. 8) {
                 drawGamePiece(gameData, row, col);
             }
         }
