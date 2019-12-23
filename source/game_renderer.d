@@ -28,8 +28,8 @@ class GameRenderer {
 
         SDL_SetRenderDrawColor(m_renderer, 36,127,67, 255);
         
-        for(int row = 0; row < 7; row ++) {
-            for(int col = 0; col < 7; col ++) {
+        foreach(row; 0 .. 7) {
+            foreach(col; 0 .. 7) {
                 SDL_RenderDrawLine(
                     m_renderer,
                     padding + (m_cell_width * (col + 1)),
