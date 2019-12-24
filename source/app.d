@@ -53,9 +53,24 @@ void main()
 
 	while(!quit) {
 		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) {
-				quit = true;
+
+			switch(event.type) {
+				case SDL_QUIT:
+					quit = true;
+					break;
+				case SDL_MOUSEBUTTONDOWN:
+					if(event.button.button == SDL_BUTTON_LEFT) {
+						int x = 0;
+						int y = 0;
+
+						SDL_GetMouseState(&x, &y);
+						game.leftClick(x, y);
+					}
+					break;
+				default:
+					break;
 			}
+
 		}
 
 		game.update(); // Update the state of the game
