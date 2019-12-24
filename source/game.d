@@ -22,17 +22,17 @@ class Game {
 
     void leftClick(int x, int y) {
 
-        int padding = 25;
+        immutable int padding = 25;
 
-        int m_cell_width  = (m_gameData.width  - (2 * padding)) / 8;
-        int m_cell_height = (m_gameData.height - (2 * padding)) / 8;
+        immutable int m_cell_width  = (m_gameData.width  - (2 * padding)) / 8;
+        immutable int m_cell_height = (m_gameData.height - (2 * padding)) / 8;
 
         int cellX = (x - padding) / m_cell_width;
         int cellY = (y - padding) / m_cell_height;
 
-        bool offScreenX   = (x <= padding) || (x >= m_gameData.width - padding);
-        bool offScreenY   = (y <= padding) || (y >= m_gameData.height - padding);
-        bool boardClicked = !(offScreenX   || offScreenY);
+        immutable bool offScreenX   = (x <= padding) || (x >= m_gameData.width - padding);
+        immutable bool offScreenY   = (y <= padding) || (y >= m_gameData.height - padding);
+        immutable bool boardClicked = !(offScreenX   || offScreenY);
 
         if(boardClicked) {
             const CellState currentCellState = m_gameData.gameBoard.get(cellY, cellX);
