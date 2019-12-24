@@ -36,7 +36,7 @@ class Game {
 
         if(boardClicked) {
             const CellState currentCellState = m_gameData.gameBoard.get(cellY, cellX);
-            CellState newCellState = CellState.FREE;
+            CellState newCellState;
 
             switch(currentCellState) {
                 case CellState.FREE:
