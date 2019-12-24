@@ -30,6 +30,12 @@ class Game {
         int cellX = (x - padding) / m_cell_width;
         int cellY = (y - padding) / m_cell_height;
 
+        bool offScreenX = (x <= padding) || (x >= m_gameData.width - padding);
+        bool offScreenY = (y <= padding) || (y >= m_gameData.height - padding);
+
+        if(offScreenX || offScreenY) {
+            return;
+        }
 
         if(m_gameData.gameBoard.get(cellY, cellX) == CellState.FREE ) {
             m_gameData.gameBoard.set(cellY, cellX, CellState.WHITE);
