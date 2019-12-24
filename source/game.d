@@ -30,7 +30,14 @@ class Game {
         int cellX = (x - padding) / m_cell_width;
         int cellY = (y - padding) / m_cell_height;
 
-        m_gameData.gameBoard.set(cellY, cellX, CellState.WHITE);
+
+        if(m_gameData.gameBoard.get(cellY, cellX) == CellState.FREE ) {
+            m_gameData.gameBoard.set(cellY, cellX, CellState.WHITE);
+        } else if(m_gameData.gameBoard.get(cellY, cellX) == CellState.WHITE) {
+            m_gameData.gameBoard.set(cellY, cellX, CellState.BLACK);
+        } else if(m_gameData.gameBoard.get(cellY, cellX) == CellState.BLACK) {
+            m_gameData.gameBoard.set(cellY, cellX, CellState.FREE);
+        }
 
     }
 }
