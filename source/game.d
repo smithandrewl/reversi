@@ -37,13 +37,25 @@ class Game {
             return;
         }
 
-        if(m_gameData.gameBoard.get(cellY, cellX) == CellState.FREE ) {
-            m_gameData.gameBoard.set(cellY, cellX, CellState.WHITE);
-        } else if(m_gameData.gameBoard.get(cellY, cellX) == CellState.WHITE) {
-            m_gameData.gameBoard.set(cellY, cellX, CellState.BLACK);
-        } else if(m_gameData.gameBoard.get(cellY, cellX) == CellState.BLACK) {
-            m_gameData.gameBoard.set(cellY, cellX, CellState.FREE);
+        const CellState currentCellState = m_gameData.gameBoard.get(cellY, cellX);
+        CellState newCellState = CellState.FREE;
+
+        switch(currentCellState) {
+            case CellState.FREE:
+                newCellState = CellState.WHITE;
+                break;
+            case CellState.WHITE:
+                newCellState = CellState.BLACK;
+                break;
+            case CellState.BLACK:
+                newCellState = CellState.FREE;
+                break;
+            default:
+                newCellState = CellState.FREE;
+                break;
         }
+
+        m_gameData.gameBoard.set(cellY, cellX, newCellState);
 
     }
 }
